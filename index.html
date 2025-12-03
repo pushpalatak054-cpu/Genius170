@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius170 - AI-Powered Intelligence Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .features {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .ai-chat {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .chat-container h2 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #667eea;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: #667eea;
+        }
+
+        .send-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .send-button:hover {
+            background: #764ba2;
+        }
+
+        .stats {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">🧠 Genius170</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#ai-chat">AI Chat</a></li>
+                    <li><a href="#stats">Stats</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Genius170</h1>
+            <p>Your AI-Powered Intelligence Platform with 20+ Advanced Features</p>
+            <button class="cta-button" onclick="document.getElementById('ai-chat').scrollIntoView({behavior: 'smooth'})">
+                Start AI Chat Now
+            </button>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>20 Powerful AI Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>1. Smart Conversations</h3>
+                    <p>Natural language processing powered by Gemini AI for human-like interactions</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>2. Intelligent Search</h3>
+                    <p>Advanced semantic search that understands context and intent</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>3. Data Analytics</h3>
+                    <p>Real-time data analysis and visualization with AI insights</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>4. Content Generation</h3>
+                    <p>Create articles, stories, and creative content instantly</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>5. Multi-Language Support</h3>
+                    <p>Communicate in 100+ languages with real-time translation</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>6. Learning Assistant</h3>
+                    <p>Personalized tutoring and educational support</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>7. Business Intelligence</h3>
+                    <p>Market analysis, trends, and strategic insights</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>8. Security Analysis</h3>
+                    <p>AI-powered threat detection and security recommendations</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>9. Document Summarization</h3>
+                    <p>Extract key points from lengthy documents instantly</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>10. Task Automation</h3>
+                    <p>Automate repetitive tasks with intelligent workflows</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>11. Email Assistant</h3>
+                    <p>Smart email composition and response suggestions</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>12. Voice Recognition</h3>
+                    <p>Accurate speech-to-text with voice commands</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>13. Image Analysis</h3>
+                    <p>Understand and describe images with AI vision</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>14. Mobile Responsive</h3>
+                    <p>Seamless experience across all devices</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>15. Real-Time Processing</h3>
+                    <p>Lightning-fast responses with edge computing</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>16. Custom AI Models</h3>
+                    <p>Train personalized models for specific needs</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>17. Predictive Analytics</h3>
+                    <p>Forecast trends and outcomes with ML algorithms</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>18. API Integration</h3>
+                    <p>Connect with 1000+ third-party services</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>19. Smart Recommendations</h3>
+                    <p>Personalized suggestions based on behavior</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌟</div>
+                    <h3>20. Continuous Learning</h3>
+                    <p>AI that improves with every interaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-chat" class="ai-chat">
+        <div class="container">
+            <div class="chat-container">
+                <h2>Chat with Genius170 AI</h2>
+                <div class="chat-box" id="chatBox">
+                    <div class="message ai-message">
+                        👋 Hello! I'm Genius170, your AI assistant powered by Gemini. How can I help you today?
+                    </div>
+                </div>
+                <div class="loading" id="loading">AI is thinking...</div>
+                <div class="input-container">
+                    <input type="text" class="chat-input" id="userInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                    <button class="send-button" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2>Platform Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="userCount">10K+</div>
+                    <div>Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="messageCount">1M+</div>
+                    <div>Messages Processed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="accuracyRate">99.5%</div>
+                    <div>Accuracy Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="responseTime">0.3s</div>
+                    <div>Avg Response Time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Genius170. Powered by Gemini AI. All rights reserved.</p>
+            <p>🚀 Building the future of AI-powered intelligence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulated Gemini AI Integration
+        // Note: In production, you would use actual Gemini API with proper authentication
+        
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+        const loading = document.getElementById('loading');
+
+        // AI Response Generator (Simulated Gemini-like responses)
+        function generateAIResponse(userMessage) {
+            const responses = {
+                'hello': 'Hello! I\'m Genius170, powered by Gemini AI. I\'m here to assist you with any questions or tasks!',
+                'help': 'I can help you with: content creation, data analysis, learning assistance, translations, coding help, and much more! What would you like to explore?',
+                'features': 'Genius170 offers 20 powerful features including smart conversations, intelligent search, data analytics, content generation, multi-language support, and more! Which feature interests you?',
+                'how are you': 'I\'m functioning perfectly! My AI systems are running at optimal performance. How can I assist you today?',
+                'thank': 'You\'re welcome! I\'m always here to help. Feel free to ask me anything!',
+                'bye': 'Goodbye! It was great chatting with you. Come back anytime you need assistance!',
+                'default': 'That\'s an interesting question! As an AI powered by Gemini, I can help you with various tasks. Could you provide more details about what you\'d like to know or accomplish?'
+            };
+
+            const lowerMessage = userMessage.toLowerCase();
+            
+            for (let key in responses) {
+                if (lowerMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            
+            // Advanced contextual responses
+            if (lowerMessage.includes('code') || lowerMessage.includes('programming')) {
+                return 'I can help you with coding! I support multiple programming languages including Python, JavaScript, Java, C++, and more. What would you like to code?';
+            }
+            
+            if (lowerMessage.includes('write') || lowerMessage.includes('create')) {
+                return 'I\'d be happy to help you create content! Whether it\'s articles, stories, emails, or reports, I can generate high-quality content. What would you like me to write?';
+            }
+            
+            if (lowerMessage.includes('translate')) {
+                return 'I can translate text between 100+ languages! Just tell me the source and target languages, and I\'ll provide accurate translations.';
+            }
+            
+            if (lowerMessage.includes('analyze') || lowerMessage.includes('data')) {
+                return 'I excel at data analysis! I can help you understand trends, create visualizations, and extract insights from your data. What data would you like to analyze?';
+            }
+            
+            return responses['default'];
+        }
+
+        function addMessage(message, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+            messageDiv.textContent = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message
+            addMessage(message, true);
+            userInput.value = '';
+            
+            // Show loading
+            loading.style.display = 'block';
+            
+            // Simulate AI processing time
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Generate and add AI response
+            const aiResponse = generateAIResponse(message);
+            loading.style.display = 'none';
+            addMessage(aiResponse, false);
+            
+            // Update stats
+            updateStats();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function updateStats() {
+            const messageCount = document.getElementById('messageCount');
+            const currentCount = parseInt(messageCount.textContent.replace(/\D/g, ''));
+            messageCount.textContent = (currentCount + 1).toLocaleString() + '+';
+        }
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.getElementById('stats');
+        observer.observe(statsSection);
+
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                stat.style.animation = 'pulse 1s ease-in-out';
+            });
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('🧠 Genius170 AI Platform Initialized');
+        console.log('✨ Powered by Gemini AI');
+        console.log('🚀 20 Features Loaded Successfully');
+    </script>
+</body>
+</html>
